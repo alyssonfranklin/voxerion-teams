@@ -1,0 +1,297 @@
+// Global styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Auth styles
+.auth-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+.auth-card {
+  max-width: 500px;
+  margin: 40px auto;
+  
+  .auth-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .auth-logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .auth-error {
+    color: var(--colorPaletteRedForeground1);
+    font-weight: 600;
+  }
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  .auth-header {
+    padding: 10px 20px;
+    background-color: var(--colorNeutralBackground3);
+    display: flex;
+    justify-content: flex-end;
+    
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+// Calendar styles
+.calendar-view {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  
+  .calendar-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    
+    @media (min-width: 769px) {
+      max-width: 350px;
+    }
+  }
+  
+  .event-detail-container {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .loading-container,
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .events-container {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding: 10px;
+    
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  .event-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    &.selected {
+      border-color: var(--colorBrandBackground);
+      background-color: var(--colorBrandBackground2);
+    }
+    
+    &.happening-now {
+      border-left: 4px solid var(--colorPaletteGreenForeground1);
+    }
+    
+    .event-card-description {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .event-time {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .event-status {
+      font-size: 0.9em;
+      
+      &.happening-now-text {
+        color: var(--colorPaletteGreenForeground1);
+        font-weight: 600;
+      }
+    }
+    
+    .event-card-content {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  
+  .event-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+    .attendees-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    
+    .insights-button {
+      margin-top: 10px;
+      align-self: flex-start;
+    }
+  }
+}
+
+// Insight panel styles
+.insight-panel-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .back-button {
+    align-self: flex-start;
+  }
+  
+  .insight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .copy-button {
+      &.copied {
+        background-color: var(--colorPaletteGreenBackground1);
+      }
+    }
+  }
+  
+  .insight-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+}
+
+// Chat insights styles
+.chat-insights-container {
+  max-width: 800px;
+  margin: 20px auto;
+  
+  .chat-insights-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    .insight-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .insight-actions {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .copy-button {
+        &.copied {
+          background-color: var(--colorPaletteGreenBackground1);
+        }
+      }
+    }
+  }
+}
+
+// Config page styles
+.config-container {
+  max-width: 600px;
+  margin: 40px auto;
+  
+  .config-content {
+    padding: 20px;
+  }
+  
+  .config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .config-input {
+    padding: 8px 12px;
+    border: 1px solid var(--colorNeutralStroke1);
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .config-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      
+      .feature-icon {
+        color: var(--colorPaletteGreenForeground1);
+      }
+    }
+  }
+  
+  .config-actions {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

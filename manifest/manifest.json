@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "version": "1.0.0",
+  "id": "{{manifestId}}",
+  "packageName": "com.voxerion.teams",
+  "developer": {
+    "name": "Voxerion",
+    "websiteUrl": "https://voxerion.com",
+    "privacyUrl": "https://voxerion.com/privacy",
+    "termsOfUseUrl": "https://voxerion.com/terms"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Voxerion",
+    "full": "Voxerion - Communication Assistant"
+  },
+  "description": {
+    "short": "A personal assistant that helps you communicate better with your team.",
+    "full": "A personal assistant that helps you to better communicate with your employees helping you to become a better leader and progress in your career."
+  },
+  "accentColor": "#F6B026",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{{domain}}/config",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ],
+      "context": [
+        "channelTab",
+        "privateChatTab",
+        "meetingChatTab",
+        "meetingDetailsTab",
+        "meetingSidePanel"
+      ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "calendar",
+      "name": "Calendar Insights",
+      "contentUrl": "https://{{domain}}/calendar",
+      "websiteUrl": "https://{{domain}}/calendar",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "{{botId}}",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal",
+            "team",
+            "groupchat"
+          ],
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Learn how to use Voxerion"
+            },
+            {
+              "title": "Settings",
+              "description": "Configure Voxerion settings"
+            },
+            {
+              "title": "Insights",
+              "description": "Get insights for your meetings"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "{{botId}}",
+      "commands": [
+        {
+          "id": "getInsight",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Get insights for better communication",
+          "title": "Get Insights",
+          "type": "action",
+          "fetchTask": true
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "{{domain}}"
+  ],
+  "webApplicationInfo": {
+    "id": "{{applicationId}}",
+    "resource": "api://{{domain}}"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Calendars.Read",
+          "type": "Application"
+        },
+        {
+          "name": "OnlineMeetings.ReadWrite",
+          "type": "Application"
+        },
+        {
+          "name": "Chat.Read",
+          "type": "Application"
+        }
+      ]
+    }
+  }
+}
